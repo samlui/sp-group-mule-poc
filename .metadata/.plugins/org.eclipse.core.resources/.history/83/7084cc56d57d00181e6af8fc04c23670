@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+    <http:listener-config name="sapi-sap-e-httpListenerConfig" host="0.0.0.0" port="${http.port}" doc:name="HTTP Listener Configuration"/>
+    <apikit:config name="sapi-sap-e-config" raml="sapi-sap-e.raml" consoleEnabled="false" doc:name="Router"/>
+    <flow name="sapi-sap-e-main">
+        <http:listener config-ref="sapi-sap-e-httpListenerConfig" path="/api/*" doc:name="HTTP"/>
+        <apikit:router config-ref="sapi-sap-e-config" doc:name="APIkit Router"/>
+        <exception-strategy ref="sapi-sap-e-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="sapi-sap-e-console">
+        <http:listener config-ref="sapi-sap-e-httpListenerConfig" path="/console/*" doc:name="HTTP"/>
+        <apikit:console config-ref="sapi-sap-e-config" doc:name="APIkit Console"/>
+    </flow>
+    <flow name="post:/account:sapi-sap-e-config">
+        <set-payload value="{&#xA;  &quot;data&quot;: [&#xA;    {&#xA;      &quot;BP_NO&quot;: &quot;1003326931&quot;,&#xA;      &quot;ACCOUNT_NO&quot;: &quot;008933084488&quot;,&#xA;      &quot;SALUTATION&quot;: &quot;MR&quot;,&#xA;      &quot;BP_NAME&quot;: &quot;BXXCEXXXXXFE&quot;,&#xA;      &quot;EMAIL_ADDR&quot;: &quot;nelsonwee@spgroup.com.sg&quot;,&#xA;      &quot;MOBILE&quot;: &quot;90000000&quot;,&#xA;      &quot;PHONE&quot;: &quot;&quot;,&#xA;      &quot;FAX&quot;: &quot;&quot;,&#xA;      &quot;ACCOUNT_STATUS&quot;: &quot;Active&quot;,&#xA;      &quot;ACCOUNT_TYPE&quot;: &quot;DOM&quot;,&#xA;      &quot;RETAILER_IDENTIFIER&quot;: &quot;&quot;,&#xA;      &quot;RETAILER_NAME&quot;: &quot;&quot;,&#xA;      &quot;PREMISE_NO&quot;: &quot;2001696810&quot;,&#xA;      &quot;PREMISE_ADDR&quot;: &quot;880 UPP BT TIMAH RD #01-04 SINGAPORE 678181&quot;,&#xA;      &quot;BLK_NO&quot;: &quot;880&quot;,&#xA;      &quot;STREET&quot;: &quot;UPP BT TIMAH RD&quot;,&#xA;      &quot;UNIT_NO&quot;: &quot;#01-04&quot;,&#xA;      &quot;POSTCODE&quot;: &quot;678181&quot;&#xA;    }&#xA;  ]&#xA;}" doc:name="Set Payload"/>
+    </flow>
+    <flow name="post:/meter_install:sapi-sap-e-config">
+        <parse-template location="meter_sap_out.json" doc:name="Parse Template"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="3e07b54e-7728-4270-b6a7-47fa9ed4a929">
+            <dw:input-payload doc:sample="meter_sap_out.json" mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json skipNullOn="everywhere"
+%var length = (p) -> sizeOf p
+
+---
+(payload.MT_InstallationMeterReadResponse.Item map (
+	{
+		ami: true,
+		device_number: $.DeviceNo		
+	} when ($.Division == '01' and ($.ToDate as :date {format: "yyyy-MM-dd"}) > now and ($.FromDate as :date {format: "yyyy-MM-dd"}) < now and $.MaterialNo[length($.MaterialNo)-1] =='A')
+	otherwise
+	{
+		ami: false,
+		device_number: $.DeviceNo 		
+	} when ($.Division == '01' and ($.ToDate as :date {format: "yyyy-MM-dd"}) > now and ($.FromDate as :date {format: "yyyy-MM-dd"}) < now and $.MaterialNo[length($.MaterialNo)-1] !='A')
+	otherwise
+	null
+))[1] ]]></dw:set-payload>
+        </dw:transform-message>
+    </flow>
+    <flow name="post:/peer_compare:sapi-sap-e-config">
+        <parse-template location="peer_sap_out.json" doc:name="Parse Template"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="ee6d3f7a-e867-459e-8952-1d76fbdedf8a">
+            <dw:input-payload doc:sample="peer_sap_out.json" mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json skipNullOn="everywhere"
+---
+
+utilities: payload.utilityDetails map (	
+	"electric" when ($.billingDetails[0].estimatedFlag == 'A' or $.billingDetails[0].estimatedFlag == 'E') and ($.utilityType =='ZE-CON')
+	otherwise
+	"gas" when ($.billingDetails[0].estimatedFlag == 'A' or $.billingDetails[0].estimatedFlag == 'E') and ($.utilityType =='ZG-CON')
+	otherwise	
+	"water" when ($.billingDetails[0].estimatedFlag == 'A' or $.billingDetails[0].estimatedFlag == 'E') and ($.utilityType =='ZW-CON')
+	otherwise
+	null
+
+)]]></dw:set-payload>
+        </dw:transform-message>
+    </flow>
+    <apikit:mapping-exception-strategy name="sapi-sap-e-apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+</mule>

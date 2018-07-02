@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.munit.launchconfig">
+<listAttribute key="Mpath">
+<listEntry value="/Users/samuel/AnypointStudio/sp-group-final/munit-demo/src/test/munit/munit-demo-apikit-test-final.xml"/>
+</listAttribute>
+<stringAttribute key="Ppath" value="/Users/samuel/AnypointStudio/sp-group-final/munit-demo"/>
+<stringAttribute key="clear_data" value="NEVER"/>
+<stringAttribute key="launch_mule_server_version" value="org.mule.tooling.server.3.9.1.ee"/>
+<listAttribute key="mule-project-names">
+<listEntry value="munit-demo"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="src/test/munit/munit-demo-apikit-test-final.xml"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="munit-demo"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Djava.library.path=/Users/samuel/AnypointStudio/sp-group-final/munit-demo/src/main/app/lib&#10;-DmunitProjectName=munit-demo"/>
+<intAttribute key="remote-debug-port" value="6666"/>
+<booleanAttribute key="remote-debug-suspend" value="true"/>
+<stringAttribute key="resource" value="munit-demo-apikit-test-final.xml"/>
+<booleanAttribute key="runCoverage" value="true"/>
+<stringAttribute key="test_name" value=""/>
+</launchConfiguration>

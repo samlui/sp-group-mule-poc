@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd ">
+    <http:listener-config name="sapi-user-httpListenerConfig" host="0.0.0.0" port="8081" />
+    <apikit:config name="sapi-user-config" raml="sapi-user.raml" consoleEnabled="false" />
+    <flow name="sapi-user-main">
+        <http:listener config-ref="sapi-user-httpListenerConfig" path="/api/*" />
+        <apikit:router config-ref="sapi-user-config" />
+        <exception-strategy ref="sapi-user-apiKitGlobalExceptionMapping" />
+    </flow>
+    <flow name="sapi-user-console">
+        <http:listener config-ref="sapi-user-httpListenerConfig" path="/console/*" />
+        <apikit:console config-ref="sapi-user-config" />
+    </flow>
+    <flow name="post:/loginHandlingWithBpNumbers:sapi-user-config">
+        <set-payload value="{&#xA;    &quot;responseData&quot;: {&#xA;        &quot;RespUserProfileService&quot;: {&#xA;            &quot;status&quot;: true,&#xA;            &quot;roles&quot;: [&#xA;                &quot;individual&quot;&#xA;            ],&#xA;            &quot;customerProfile&quot;: {&#xA;                &quot;userId&quot;: &quot;S8187903F&quot;,&#xA;                &quot;name&quot;: &quot;BXXCEXXXXXFE&quot;,&#xA;                &quot;email&quot;: &quot;nelsonwee@spgroup.com.sg&quot;,&#xA;                &quot;nric&quot;: &quot;S8187903F&quot;,&#xA;                &quot;uen&quot;: null,&#xA;                &quot;bpNo&quot;: &quot;1003326931&quot;,&#xA;                &quot;isCompany&quot;: &quot;N&quot;,&#xA;                &quot;masterSub&quot;: &quot;N&quot;,&#xA;                &quot;processedDate&quot;: 1506420639410,&#xA;                &quot;profileStatus&quot;: &quot;A&quot;,&#xA;                &quot;emailActivatedDate&quot;: 1526879208533,&#xA;                &quot;isEmailActivated&quot;: &quot;N&quot;,&#xA;                &quot;createdBy&quot;: &quot;PMYUTILDBGRP&quot;,&#xA;                &quot;createdDate&quot;: 1518182377717,&#xA;                &quot;modifiedBy&quot;: &quot;S8187903F&quot;,&#xA;                &quot;modifiedDate&quot;: 1529630885563,&#xA;                &quot;activationExpiry&quot;: null,&#xA;                &quot;token&quot;: &quot;&quot;,&#xA;                &quot;tokenExpiry&quot;: 1529890004777,&#xA;                &quot;emailActivationToken&quot;: &quot;94BW4EKN&quot;,&#xA;                &quot;tChecksum&quot;: null,&#xA;                &quot;nricH&quot;: &quot;924A63BE913CF1B7E90A723109FD5784&quot;,&#xA;                &quot;emailH&quot;: &quot;5753D2A2DA40D04AD7F3CC7A024B6E90&quot;,&#xA;                &quot;changePassword&quot;: &quot;Y&quot;,&#xA;                &quot;termsAndConditions&quot;: &quot;N&quot;,&#xA;                &quot;version&quot;: &quot;1.0.0&quot;&#xA;            },&#xA;            &quot;bpNumbers&quot;: [&#xA;                {&#xA;                    &quot;bpNo&quot;: &quot;1003326931&quot;,&#xA;                    &quot;system&quot;: &quot;E&quot;&#xA;                },&#xA;                {&#xA;                    &quot;bpNo&quot;: &quot;7000043525&quot;,&#xA;                    &quot;system&quot;: &quot;M&quot;&#xA;                }&#xA;            ],&#xA;            &quot;accLockMessage&quot;: null,&#xA;            &quot;dormant&quot;: false,&#xA;            &quot;firstLoginStatus&quot;: false,&#xA;            &quot;adminRoleName&quot;: null,&#xA;            &quot;passHistoryMessage&quot;: null&#xA;        }&#xA;    },&#xA;    &quot;responseError&quot;: null&#xA;}" />
+    </flow>
+    <apikit:mapping-exception-strategy name="sapi-user-apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" />
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" />
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" />
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" />
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" />
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" />
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" />
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" />
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" />
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" />
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+</mule>

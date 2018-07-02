@@ -1,0 +1,8 @@
+INFO  2018-06-29 16:48:31,154 [main] org.mule.module.launcher.domain.DefaultMuleDomain: 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ New domain 'default'                                     +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+INFO  2018-06-29 16:48:31,155 [main] org.mule.module.launcher.domain.DefaultMuleDomain: 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing domain 'default'                            +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

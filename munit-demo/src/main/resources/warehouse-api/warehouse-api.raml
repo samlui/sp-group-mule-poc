@@ -1,0 +1,28 @@
+#%RAML 0.8
+title: Warehouse AP
+baseUri: http://some.unreachable.domain/warehouse/api
+
+/warehouse/{warehouseId}/product/{productId}/stock:
+  get:
+    responses: 
+      200:
+        body: 
+          application/json:
+            example: | 
+              {
+                "quantity" : 12010,
+                "measure" : "units"
+              }
+            schema: | 
+              {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties": {
+                  "quantity": {
+                    "type": "integer"
+                  },
+                  "measure": {
+                    "type": "string"
+                  }
+                }            
+              }

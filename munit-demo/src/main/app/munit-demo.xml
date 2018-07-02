@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:context="http://www.springframework.org/schema/context" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    <http:listener-config name="httpListenerConfig" host="0.0.0.0" port="${http.port}" doc:name="HTTP Listener Configuration"/>
+    <apikit:config name="apiConfig" raml="api.raml" consoleEnabled="true" consolePath="console" doc:name="Router"/>
+    <context:property-placeholder location="api.properties" />
+    <db:mysql-config name="MySQL_Configuration" host="${db.host}" port="${db.port}" user="${db.user}"  database="${db.schema}" password="${db.pass}" doc:name="MySQL Configuration"/>
+    <http:request-config name="SalesAPI_Request_Config" host="${sales.api.host}" port="${sales.api.port}" basePath="${sales.api.base}" doc:name="HTTP Request Configuration">
+        <http:raml-api-configuration location="sales-api/sales-api.raml"/>
+    </http:request-config>
+    <http:request-config name="WarehouseAPI_Request_Config" host="${warehouse.api.host}" port="${warehouse.api.port}" basePath="${warehouse.api.base}" doc:name="HTTP Request Configuration">
+        <http:raml-api-configuration location="warehouse-api/warehouse-api.raml"/>
+    </http:request-config>
+    <flow name="api-main">
+        <http:listener config-ref="httpListenerConfig" path="/api/*" doc:name="HTTP"/>
+        <apikit:router config-ref="apiConfig" doc:name="APIkit Router"/>
+        <exception-strategy ref="apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="get:/book/{id}:apiConfig">
+        <http:request config-ref="SalesAPI_Request_Config" path="/pricelist/{pricelistId}/product/{productId}" method="GET" target="#[flowVars.bookPrice]" doc:name="Get book price">
+            <http:request-builder>
+                <http:uri-param paramName="pricelistId" value="1"/>
+                <http:uri-param paramName="productId" value="#[flowvars.id]"/>
+            </http:request-builder>
+        </http:request>
+        <http:request config-ref="WarehouseAPI_Request_Config" path="/warehouse/{warehouseId}/product/{productId}/stock" method="GET" target="#[flowVars.bookStock]" doc:name="Get book stock">
+            <http:request-builder>
+                <http:query-param paramName="productId" value="#[flowvars.id]"/>
+                <http:uri-param paramName="warehouseId" value="1"/>
+            </http:request-builder>
+        </http:request>
+        <db:select config-ref="MySQL_Configuration" doc:name="Get book">
+            <db:parameterized-query><![CDATA[SELECT b.id,
+    b.isbn_code,
+    b.cat,
+    b.name,
+    b.author,
+    b.series,
+    b.sequence_num,
+    b.genre,
+    b.pages_num
+FROM book b
+WHERE b.id = #[flowVars.id]]]></db:parameterized-query>
+        </db:select>
+        <dw:transform-message metadata:id="1b13b5ed-1374-4fe4-b5c2-4794ed064f69" doc:name="Build response">
+            <dw:input-payload doc:sample="sample_data/list_map.dwl"/>
+            <dw:input-variable doc:sample="sample_data/json.json" mimeType="application/json" variableName="bookPrice"/>
+            <dw:input-variable doc:sample="sample_data/json_1.json" mimeType="application/json" variableName="bookStock"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	author: payload.author[0],
+	category: payload.cat[0],
+	genre: payload.genre[0],
+	id: payload.id[0],
+	inStock: flowVars.bookStock.quantity > 0,
+	isbn: payload.isbn_code[0],
+	name: payload.name[0],
+	pages: payload.pages_num[0],
+	price: flowVars.bookPrice.price,
+	sequence: payload.sequence_num[0],
+	serie: payload.series[0],
+	stock: flowVars.bookStock.quantity
+}]]></dw:set-payload>
+        </dw:transform-message>
+    </flow>
+    <flow name="post:/book:apiConfig">
+        <dw:transform-message doc:name="Get book fields">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	sequence_num: payload.sequence as :string,
+	pages_num: payload.pages as :string,
+	author: payload.author,
+	series: payload.serie,
+	cat: payload.category,
+	name: payload.name,
+	genre: payload.genre,
+	isbn_code: payload.isbn
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <db:insert config-ref="MySQL_Configuration" doc:name="Insert book" autoGeneratedKeys="true" autoGeneratedKeysColumnNames="id">
+            <db:parameterized-query><![CDATA[INSERT INTO book
+(isbn_code,
+cat,
+name,
+author,
+series,
+sequence_num,
+genre,
+pages_num)
+VALUES
+( #[payload.isbn_code],
+#[payload.cat],
+#[payload.name],
+#[payload.author],
+#[payload.series],
+#[payload.sequence_num],
+#[payload.genre],
+#[payload.pages_num]);]]></db:parameterized-query>
+        </db:insert>
+        <dw:transform-message doc:name="Build response">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	id: payload[0].GENERATED_KEY
+}]]></dw:set-payload>
+        </dw:transform-message>
+    </flow>
+    <apikit:mapping-exception-strategy name="apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+</mule>

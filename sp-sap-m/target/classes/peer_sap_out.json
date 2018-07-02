@@ -1,0 +1,422 @@
+{
+  "utilityDetails": [
+    {
+      "utilityType": "ZE-CON",
+      "billingDetails": [
+        {
+          "billDate": "04-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "115.45",
+          "efficientSpending": "49.64",
+          "customerKWH": "0",
+          "averageKWH": "525.00000000000000",
+          "efficientKWH": "226.00000000000000",
+          "estimatedFlag": "N"
+        },
+        {
+          "billDate": "03-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "115.45",
+          "efficientSpending": "49.64",
+          "customerKWH": "0",
+          "averageKWH": "525.00000000000000",
+          "efficientKWH": "226.00000000000000",
+          "estimatedFlag": "N"
+        },
+        {
+          "billDate": "02-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "119.61",
+          "efficientSpending": "51.43",
+          "customerKWH": "0",
+          "averageKWH": "542.00000000000000",
+          "efficientKWH": "233.00000000000000",
+          "estimatedFlag": "N"
+        },
+        {
+          "billDate": "01-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "295.00000000000000",
+          "averageKWH": "476.00000000000000",
+          "efficientKWH": "302.00000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "12-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "222.00000000000000",
+          "averageKWH": "400.00000000000000",
+          "efficientKWH": "242.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "11-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "349.00000000000000",
+          "averageKWH": "532.00000000000000",
+          "efficientKWH": "341.00000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "10-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "361.00000000000000",
+          "averageKWH": "578.00000000000000",
+          "efficientKWH": "364.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "09-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "360.00000000000000",
+          "averageKWH": "528.00000000000000",
+          "efficientKWH": "341.00000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "08-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "303.00000000000000",
+          "averageKWH": "507.00000000000000",
+          "efficientKWH": "328.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "07-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "429.00000000000000",
+          "averageKWH": "600.00000000000000",
+          "efficientKWH": "393.00000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "06-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "477.00000000000000",
+          "averageKWH": "694.00000000000000",
+          "efficientKWH": "443.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "05-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "367.00000000000000",
+          "averageKWH": "558.00000000000000",
+          "efficientKWH": "316.00000000000000",
+          "estimatedFlag": "E"
+        }
+      ],
+      "currentMonth": "01-2018",
+      "currCustomerSpending": "0.00",
+      "currAverageSpending": "0.00",
+      "currEfficientSpending": "0.00",
+      "customerEcoSpending": "0",
+      "averageEcoSpending": "0",
+      "efficientEcoSpending": "0",
+      "comparisonArea": "within your block",
+      "calculationDate": "2018-01-20",
+      "spendDiff": "0.00",
+      "ecoSaving": "0",
+      "amountMsgFlag": "efficient",
+      "amountMsg": "You are using 0 less than your efficient neighbours"
+    },
+    {
+      "utilityType": "ZW-CON",
+      "billingDetails": [
+        {
+          "billDate": "04-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "17.33",
+          "efficientSpending": "8.15",
+          "customerKWH": "0",
+          "averageKWH": "13.50000000000000",
+          "efficientKWH": "6.30000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "03-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "17.33",
+          "efficientSpending": "8.15",
+          "customerKWH": "0",
+          "averageKWH": "13.50000000000000",
+          "efficientKWH": "6.30000000000000",
+          "estimatedFlag": "N"
+        },
+        {
+          "billDate": "02-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "17.26",
+          "efficientSpending": "8.11",
+          "customerKWH": "0",
+          "averageKWH": "13.50000000000000",
+          "efficientKWH": "6.30000000000000",
+          "estimatedFlag": "N"
+        },
+        {
+          "billDate": "01-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "28.00000000000000",
+          "averageKWH": "18.10000000000000",
+          "efficientKWH": "10.60000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "12-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "23.00000000000000",
+          "averageKWH": "15.90000000000000",
+          "efficientKWH": "9.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "11-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "31.20000000000000",
+          "averageKWH": "19.90000000000000",
+          "efficientKWH": "11.80000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "10-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "35.60000000000000",
+          "averageKWH": "22.80000000000000",
+          "efficientKWH": "12.80000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "09-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "28.90000000000000",
+          "averageKWH": "18.80000000000000",
+          "efficientKWH": "10.90000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "08-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "29.80000000000000",
+          "averageKWH": "20.10000000000000",
+          "efficientKWH": "12.20000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "07-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "30.50000000000000",
+          "averageKWH": "20.70000000000000",
+          "efficientKWH": "12.70000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "06-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "28.30000000000000",
+          "averageKWH": "21.30000000000000",
+          "efficientKWH": "12.30000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "05-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "29.90000000000000",
+          "averageKWH": "20.10000000000000",
+          "efficientKWH": "10.30000000000000",
+          "estimatedFlag": "E"
+        }
+      ],
+      "currentMonth": "01-2018",
+      "currCustomerSpending": "0.00",
+      "currAverageSpending": "0.00",
+      "currEfficientSpending": "0.00",
+      "customerEcoSpending": "0.0",
+      "averageEcoSpending": "0.0",
+      "efficientEcoSpending": "0.0",
+      "comparisonArea": "within your block",
+      "calculationDate": "2018-01-20",
+      "spendDiff": "0.00",
+      "ecoSaving": "0.0",
+      "amountMsgFlag": "efficient",
+      "amountMsg": "You are using 0 less than your efficient neighbours"
+    },
+    {
+      "utilityType": "ZG-CON",
+      "billingDetails": [
+        {
+          "billDate": "04-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "15.99",
+          "efficientSpending": "9.75",
+          "customerKWH": "0",
+          "averageKWH": "84.00000000000000",
+          "efficientKWH": "51.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "03-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "15.99",
+          "efficientSpending": "9.75",
+          "customerKWH": "0",
+          "averageKWH": "84.00000000000000",
+          "efficientKWH": "51.00000000000000",
+          "estimatedFlag": "N"
+        },
+        {
+          "billDate": "02-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "15.81",
+          "efficientSpending": "9.64",
+          "customerKWH": "0",
+          "averageKWH": "83.00000000000000",
+          "efficientKWH": "51.00000000000000",
+          "estimatedFlag": "N"
+        },
+        {
+          "billDate": "01-2018",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "269.00000000000000",
+          "averageKWH": "158.00000000000000",
+          "efficientKWH": "85.00000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "12-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "228.00000000000000",
+          "averageKWH": "141.00000000000000",
+          "efficientKWH": "74.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "11-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "289.00000000000000",
+          "averageKWH": "173.00000000000000",
+          "efficientKWH": "93.00000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "10-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "331.00000000000000",
+          "averageKWH": "196.00000000000000",
+          "efficientKWH": "101.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "09-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "269.00000000000000",
+          "averageKWH": "164.00000000000000",
+          "efficientKWH": "89.00000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "08-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "285.00000000000000",
+          "averageKWH": "165.00000000000000",
+          "efficientKWH": "88.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "07-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "258.00000000000000",
+          "averageKWH": "180.00000000000000",
+          "efficientKWH": "98.00000000000000",
+          "estimatedFlag": "E"
+        },
+        {
+          "billDate": "06-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "207.00000000000000",
+          "averageKWH": "166.00000000000000",
+          "efficientKWH": "83.00000000000000",
+          "estimatedFlag": "A"
+        },
+        {
+          "billDate": "05-2017",
+          "customerSpending": "0.00",
+          "averageSpending": "0.00",
+          "efficientSpending": "0.00",
+          "customerKWH": "305.00000000000000",
+          "averageKWH": "90.00000000000000",
+          "efficientKWH": "32.00000000000000",
+          "estimatedFlag": "E"
+        }
+      ],
+      "currentMonth": "01-2018",
+      "currCustomerSpending": "0.00",
+      "currAverageSpending": "0.00",
+      "currEfficientSpending": "0.00",
+      "customerEcoSpending": "0",
+      "averageEcoSpending": "0",
+      "efficientEcoSpending": "0",
+      "comparisonArea": "within your block",
+      "calculationDate": "2018-01-20",
+      "spendDiff": "0.00",
+      "ecoSaving": "0",
+      "amountMsgFlag": "efficient",
+      "amountMsg": "You are using 0 less than your efficient neighbours"
+    }
+  ],
+  "lastBillingCycle": "19 December 2017 - 18 January 2018",
+  "nextBillingCycle": "",
+  "premiseType": "all Private Apartments",
+  "accStatus": ""
+}

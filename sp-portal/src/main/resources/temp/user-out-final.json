@@ -1,0 +1,54 @@
+{
+  "responseData": {
+    "RespUserProfileService": {
+      "status": true,
+      "roles": [
+        "individual"
+      ],
+      "customerProfile": {
+        "userId": "S8187903F",
+        "name": "BXXCEXXXXXFE",
+        "email": "nelsonwee@spgroup.com.sg",
+        "nric": "S8187903F",
+        "uen": null,
+        "bpNo": "1003326931",
+        "isCompany": "N",
+        "masterSub": "N",
+        "processedDate": 1506420639410,
+        "profileStatus": "A",
+        "emailActivatedDate": 1526879208533,
+        "isEmailActivated": "N",
+        "createdBy": "PMYUTILDBGRP",
+        "createdDate": 1518182377717,
+        "modifiedBy": "S8187903F",
+        "modifiedDate": 1529630885563,
+        "activationExpiry": null,
+        "token": "",
+        "tokenExpiry": 1529890004777,
+        "emailActivationToken": "94BW4EKN",
+        "tChecksum": null,
+        "nricH": "924A63BE913CF1B7E90A723109FD5784",
+        "emailH": "5753D2A2DA40D04AD7F3CC7A024B6E90",
+        "changePassword": "Y",
+        "termsAndConditions": "N",
+        "version": "1.0.0"
+      },
+      "bpNumbers": [
+        {
+          "bpNo": "1003326931",
+          "system": "E"
+        },
+        {
+          "bpNo": "7000043525",
+          "system": "M"
+        }
+      ],
+      "accLockMessage": null,
+      "dormant": false,
+      "firstLoginStatus": false,
+      "adminRoleName": null,
+      "passHistoryMessage": null
+    }
+  },
+  "responseError": null
+}

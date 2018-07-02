@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "sap-peer-out-json"
+        }
+    },
+    "outputMessageMetadata": {},
+    "id": "d63a5e3b-e1b5-47a1-9304-59d0ca37eb91",
+    "version": "5.2.0.0"
+}

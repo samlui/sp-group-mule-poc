@@ -1,0 +1,29 @@
+#%RAML 0.8
+title: Sales API
+baseUri: http://some.unreachable.domain/sales/api
+
+/pricelist/{pricelistId}/product/{productId}:
+  get:
+    responses: 
+      200: 
+        body: 
+          application/json:
+            example: | 
+              {
+                "price" : 33.23 ,
+                "currency" : "USD"
+              }
+            schema: |
+              {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties": {
+                  "price": {
+                    "type": "number"
+                  },
+                  "currency": {
+                    "type": "string"
+                  }
+                }
+              }
+        

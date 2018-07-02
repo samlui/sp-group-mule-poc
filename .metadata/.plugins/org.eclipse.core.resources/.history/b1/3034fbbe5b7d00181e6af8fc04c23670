@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    
+    
+    <flow name="userFlow">
+        <dw:transform-message doc:name="Transform Message" metadata:id="af2501f8-ba6e-4651-830f-9dbb22950bf1">
+            <dw:input-payload mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	UserID: payload.user_id,
+	Password: payload.password,
+	Source: "M"
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <http:request config-ref="sapi-user-service_configuration" path="/loginHandlingWithBpNumbers" method="POST" doc:name="Login with BpNumbers"/>
+        <logger message="1. login output : #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+payload]]></dw:set-payload>
+            <dw:set-variable variableName="userid"><![CDATA[%dw 1.0
+%output application/java
+---
+payload]]></dw:set-variable>
+        </dw:transform-message>
+        <logger message="2. userid : #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+        <set-payload value="#[payload.responseData.RespUserProfileService.bpNumbers]" doc:name="Set Payload"/>
+        <request-reply doc:name="Request-Reply">
+            <vm:outbound-endpoint exchange-pattern="one-way" path="user.in.1" doc:name="VM"/>
+            <vm:inbound-endpoint exchange-pattern="one-way" path="user.out" doc:name="VM"/>
+        </request-reply>
+        <logger message="Aggregated users : #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="bd87f6ce-541b-4600-9f72-54f5989ce9ac">
+            <dw:input-payload doc:sample="temp/tmp-aggregated-account-out.json" mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{(
+	payload map ((payload01, index01) -> {
+		
+		(payload01.accounts.data map {
+			($.BP_NO): {
+				system: payload01.system,
+				account: $
+			}
+		})	
+	
+	})
+)}
+
+]]></dw:set-payload>
+            <dw:set-variable variableName="accounts"><![CDATA[%dw 1.0
+%output application/java
+---
+payload map ((payload01, index01) -> {
+	
+	(payload01.accounts.data map {
+		
+			system: payload01.system,
+			account: $
+		
+	})	
+
+})
+
+]]></dw:set-variable>
+        </dw:transform-message>
+        <logger message="distinct list of accounts : #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="userFlow1">
+        <vm:inbound-endpoint exchange-pattern="one-way" path="user.in.1" doc:name="VM"/>
+        <set-variable variableName="MULE_REPLYTO_STOP" value="true" doc:name="MULE_REPLYTO_STOP"/>
+        <collection-splitter doc:name="Collection Splitter"/>
+        <vm:outbound-endpoint exchange-pattern="one-way" path="user.in.2" doc:name="VM"/>
+    </flow>
+    <flow name="userFlow2">
+        <vm:inbound-endpoint exchange-pattern="one-way" path="user.in.2" doc:name="VM"/>
+        <logger message="3. each payload #[payload]" level="INFO" doc:name="Logger"/>
+        <enricher source="#[payload]" target="#[payload]" doc:name="Message Enricher">
+            <processor-chain doc:name="Processor Chain">
+                <choice doc:name="Choice">
+                    <when expression="#[payload.system ==&quot;M&quot;]">
+                        <dw:transform-message doc:name="Transform Message">
+                            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	bp_number: payload.bpNo
+}]]></dw:set-payload>
+                        </dw:transform-message>
+                        <logger message="E input : #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+                        <http:request config-ref="sapi-sap-e-service-configuration" path="/account" method="POST" doc:name="Search Account - E"/>
+                        <dw:transform-message doc:name="Transform Message">
+                            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	system:"M",
+	accounts: payload
+}]]></dw:set-payload>
+                        </dw:transform-message>
+                        <logger message="E output :  #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+                    </when>
+                    <otherwise>
+                        <dw:transform-message doc:name="Transform Message">
+                            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	bp_number: payload.bpNo
+}]]></dw:set-payload>
+                        </dw:transform-message>
+                        <logger message="M input : #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+                        <http:request config-ref="sapi-sap-m-service-configuration" path="/account" method="POST" doc:name="Search Account - M"/>
+                        <dw:transform-message doc:name="Transform Message">
+                            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	system:"E",
+	accounts: payload
+}]]></dw:set-payload>
+                        </dw:transform-message>
+                        <logger message="M output :  #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
+                    </otherwise>
+                </choice>
+            </processor-chain>
+        </enricher>
+        <vm:outbound-endpoint exchange-pattern="one-way" path="user.in.3" doc:name="VM"/>
+    </flow>
+    <flow name="userFlow3">
+        <vm:inbound-endpoint exchange-pattern="one-way" path="user.in.3" doc:name="VM"/>
+        <collection-aggregator failOnTimeout="true" doc:name="Collection Aggregator"/>
+        <vm:outbound-endpoint exchange-pattern="one-way" path="user.out" doc:name="VM"/>
+    </flow>
+</mule>

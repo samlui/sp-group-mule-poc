@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "tmp-meter-in-json"
+        }
+    },
+    "outputMessageMetadata": {},
+    "id": "05900a1f-3175-4ea8-8c9e-b18de0f3151e",
+    "version": "5.2.0.0"
+}

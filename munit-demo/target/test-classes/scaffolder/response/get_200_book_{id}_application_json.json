@@ -1,0 +1,14 @@
+{
+  "id" : 121293,
+  "isbn" : "978-3-16-148410-0",
+  "category" : "hardcover",
+  "name" : "The Lightning Thief",
+  "author" : "Rick Riordan",
+  "serie" : "Percy Jackson and the Olympians",
+  "sequence" : 1,
+  "genre" : "fantasy",
+  "inStock" : true,
+  "price" : 12.50,
+  "stock" : 12002,
+  "pages" : 384
+}

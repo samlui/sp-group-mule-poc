@@ -1,0 +1,23 @@
+{  
+   "system":"M",
+   "account":{  
+      "BP_NO":"1003326931",
+      "ACCOUNT_NO":"008933084488",
+      "SALUTATION":"MR",
+      "BP_NAME":"BXXCEXXXXXFE",
+      "EMAIL_ADDR":"nelsonwee@spgroup.com.sg",
+      "MOBILE":"90000000",
+      "PHONE":"",
+      "FAX":"",
+      "ACCOUNT_STATUS":"Active",
+      "ACCOUNT_TYPE":"DOM",
+      "RETAILER_IDENTIFIER":"",
+      "RETAILER_NAME":"",
+      "PREMISE_NO":"2001696810",
+      "PREMISE_ADDR":"880 UPP BT TIMAH RD #01-04 SINGAPORE 678181",
+      "BLK_NO":"880",
+      "STREET":"UPP BT TIMAH RD",
+      "UNIT_NO":"#01-04",
+      "POSTCODE":"678181"
+   }
+}

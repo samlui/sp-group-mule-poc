@@ -1,0 +1,17 @@
+{
+    "inputMessageMetadata": {
+        "flowVariables": {
+            "bookStock": {
+                "connectorName": "WarehouseAPI_Request_Config",
+                "typeId": "GET:/warehouse/{warehouseId}/product/{productId}/stock_response"
+            },
+            "bookPrice": {
+                "connectorName": "SalesAPI_Request_Config",
+                "typeId": "GET:/pricelist/{pricelistId}/product/{productId}_response"
+            }
+        }
+    },
+    "outputMessageMetadata": {},
+    "id": "1b13b5ed-1374-4fe4-b5c2-4794ed064f69",
+    "version": "5.2.0.0"
+}

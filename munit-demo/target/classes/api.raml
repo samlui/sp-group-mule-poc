@@ -1,0 +1,107 @@
+#%RAML 0.8
+title: Books API
+
+schemas:
+  - book: |
+      {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "isbn": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "serie": {
+            "type": "string"
+          },
+          "sequence": {
+            "type": "integer"
+          },
+          "genre": {
+            "type": "string"
+          },
+          "inStock": {
+            "type": "boolean"
+          },
+          "price": {
+            "type": "number"
+          },
+          "stock": {
+            "type": "integer"
+          },
+          "pages": {
+            "type": "integer"
+          }
+        }
+      }
+  - bookResponse: |
+      {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        }
+      }
+
+/book:
+  post:
+    body:
+      application/json:
+        example: |
+          {
+            "isbn" : "978-3-16-148410-0",
+            "category" : "hardcover",
+            "name" : "The Lightning Thief",
+            "author" : "Rick Riordan",
+            "serie" : "Percy Jackson and the Olympians",
+            "sequence" : 1,
+            "genre" : "fantasy",
+            "pages" : 384
+          }
+        schema: book
+    responses: 
+      200:
+        body: 
+          application/json:
+            example: |
+              {
+                "id" : 121293
+              }
+            schema: bookResponse
+            
+  /{id}:
+    get:
+      responses: 
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "id" : 121293,
+                  "isbn" : "978-3-16-148410-0",
+                  "category" : "hardcover",
+                  "name" : "The Lightning Thief",
+                  "author" : "Rick Riordan",
+                  "serie" : "Percy Jackson and the Olympians",
+                  "sequence" : 1,
+                  "genre" : "fantasy",
+                  "inStock" : true,
+                  "price" : 12.50,
+                  "stock" : 12002,
+                  "pages" : 384
+                }
+              schema: book          
+  

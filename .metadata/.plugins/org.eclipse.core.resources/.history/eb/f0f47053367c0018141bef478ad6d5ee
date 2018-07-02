@@ -1,0 +1,30 @@
+{
+  "MT_InstallationMeterReadResponse": {
+    "Item": [
+      {
+        "Division": "01",
+        "ToDate": "2015-04-06",
+        "FromDate": "2000-01-18",
+        "DeviceNo": "XX2359769",
+        "MaterialNo": "EW1A",
+        "EquipmentNo": "000000000014629196",
+        "InstallationNo": "3003492627",
+        "PremiseNo": "2000280756",
+        "RateCat": "ELECDOM"
+      },
+      {
+        "Division": "01",
+        "ToDate": "9999-12-31",
+        "FromDate": "2015-04-07",
+        "DeviceNo": "AA1234567",
+        "MaterialNo": "EW1A",
+        "EquipmentNo": "000000000016731565",
+        "InstallationNo": "3003492627",
+        "PremiseNo": "2000280756",
+        "RateCat": "ELECDOM"
+      }
+    ],
+    "ErrMsg": "",
+    "Code": ""
+  }
+}

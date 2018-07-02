@@ -1,0 +1,6 @@
+#** GENERATED CONTENT ** Mule Application Deployment Descriptor
+#Sat Jun 30 15:14:10 HKT 2018
+redeployment.enabled=true
+encoding=UTF-8
+config.resources=eapi-portal.xml,process-all.xml
+domain=default

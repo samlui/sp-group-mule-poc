@@ -1,0 +1,86 @@
+#%RAML 1.0
+title: sAPI - SAP Service
+baseUri: https://mocksvc.mulesoft.com/mocks/d4f90882-7fa0-4abe-a9d2-77a02990d66b/sap # baseUri: https://mocksvc.mulesoft.com/mocks/d613c650-7cff-43c7-9be3-0d5c8670e643/sap # baseUri: https://mocksvc.mulesoft.com/mocks/eb54b33b-3f96-4ee7-9b3b-b0bf72ced1cd/sap # baseUri: http://localhost:8081/sap
+version: 1.0
+
+/account:
+  post:
+    displayName: Get Customer Account Details
+    description: Get Customer Account Details
+    body:
+      application/json:
+        example: | 
+          {
+            "bp_number": "7000043525"
+          }
+    responses:
+      200:
+          description: return the list of accounts
+          body:
+            application/json:
+              example: | 
+                {
+                  "data": [
+                    {
+                      "BP_NO": "7000043525",
+                      "ACCOUNT_NO": "009301581303",
+                      "SALUTATION": "MR",
+                      "BP_NAME": "BXXCEXXXXXFE",
+                      "EMAIL_ADDR": "nelsonwee@spgroup.com.sg",
+                      "MOBILE": "90000000",
+                      "PHONE": "",
+                      "FAX": "",
+                      "ACCOUNT_STATUS": "Active",
+                      "ACCOUNT_TYPE": "DOM",
+                      "RETAILER_IDENTIFIER": "",
+                      "RETAILER_NAME": "SP Services Ltd",
+                      "PREMISE_NO": "6100051650",
+                      "PREMISE_ADDR": "880 UPP BT TIMAH RD #01-04 SINGAPORE 678181",
+                      "BLK_NO": "880",
+                      "STREET": "UPP BT TIMAH RD",
+                      "UNIT_NO": "#01-04",
+                      "POSTCODE": "678181"
+                    }
+                  ]
+                }
+/peer_compare:
+  post:
+    displayName: Get Peer Comparision (EBS or MSSL)
+    description: Get Peer Comparision (EBS or MSSL)
+    body:
+      application/json:
+        example: |
+          {
+            "account_number": "009301581303"
+          }
+    responses:
+      200:
+          description: return the list of accounts
+          body:
+            application/json:
+              example: | 
+                {
+                  "utilities": [
+                    "electric"
+                  ]
+                }
+/meter_install:
+  post:
+    displayName: Get Peer Comparision (EBS or MSSL)
+    description: Get Peer Comparision (EBS or MSSL)
+    body:
+      application/json:
+        example: | 
+          {
+            "account_number": "009301581303"
+          }
+    responses:
+      200:
+          description: RFC MeterInstallationDetails (EBS)
+          body:
+            application/json:
+              example: |  
+                {
+                  "ami": true,
+                  "device_number": "AA1234567"
+                }

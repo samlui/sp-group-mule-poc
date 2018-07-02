@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "tmp-aggregated-account-out-json"
+        }
+    },
+    "outputMessageMetadata": {},
+    "id": "bd87f6ce-541b-4600-9f72-54f5989ce9ac",
+    "version": "5.2.0.0"
+}

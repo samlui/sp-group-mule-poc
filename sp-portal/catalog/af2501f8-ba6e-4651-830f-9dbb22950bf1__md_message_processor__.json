@@ -1,0 +1,16 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "eapi-login-in-json"
+        }
+    },
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "sapi-auth-in-json"
+        }
+    },
+    "id": "af2501f8-ba6e-4651-830f-9dbb22950bf1",
+    "version": "5.2.0.0"
+}
