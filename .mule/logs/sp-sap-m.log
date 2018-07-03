@@ -1007,3 +1007,161 @@
 *   DevKit Extension Information                                     *
 *   Wrapper Manager                                                  *
 **********************************************************************
+2018-07-03 17:46:10,946 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing app 'sp-sap-m'                              +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-07-03 17:46:11,523 [main] INFO  org.mule.api.security.tls.TlsProperties - Loading configuration file: tls-default.conf
+2018-07-03 17:46:11,733 [main] INFO  org.mule.api.security.tls.TlsProperties - Loading configuration file: tls-default.conf
+2018-07-03 17:46:11,739 [main] INFO  org.mule.api.security.tls.TlsProperties - Loading configuration file: tls-default.conf
+2018-07-03 17:46:15,964 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising RegistryBroker
+2018-07-03 17:46:16,102 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Starting discovery of extensions
+2018-07-03 17:46:16,263 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Discovered 1 extensions
+2018-07-03 17:46:16,264 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Registering extension validation (version 3.9)
+2018-07-03 17:46:16,355 [main] INFO  org.mule.config.spring.MuleArtifactContext - Refreshing org.mule.config.spring.MuleArtifactContext@59c33386: startup date [Tue Jul 03 17:46:16 HKT 2018]; root of context hierarchy
+2018-07-03 17:46:17,602 [main] INFO  org.mule.config.spring.processors.NoDevkitInjectorProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-07-03 17:46:18,830 [main] WARN  org.mule.module.ognl.expression.OgnlExpressionEvaluator - OGNL module is deprecated and will be removed in Mule 4.0. Use MEL expressions instead.
+2018-07-03 17:46:19,097 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs /Users/samuel/AnypointStudio/sp-group-final/.mule/./.mule/sp-sap-m/queue-tx-log/tx1.log and /Users/samuel/AnypointStudio/sp-group-final/.mule/./.mule/sp-sap-m/queue-tx-log/tx2.log
+2018-07-03 17:46:19,111 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs /Users/samuel/AnypointStudio/sp-group-final/.mule/./.mule/sp-sap-m/queue-xa-tx-log/tx1.log and /Users/samuel/AnypointStudio/sp-group-final/.mule/./.mule/sp-sap-m/queue-xa-tx-log/tx2.log
+2018-07-03 17:46:19,200 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising model: _muleSystemModel
+2018-07-03 17:46:19,201 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: sapi-sap-m-main
+2018-07-03 17:46:19,202 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=404, exceptions=[org.mule.module.apikit.exception.NotFoundException]}
+2018-07-03 17:46:19,211 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=405, exceptions=[org.mule.module.apikit.exception.MethodNotAllowedException]}
+2018-07-03 17:46:19,212 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=415, exceptions=[org.mule.module.apikit.exception.UnsupportedMediaTypeException]}
+2018-07-03 17:46:19,212 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=406, exceptions=[org.mule.module.apikit.exception.NotAcceptableException]}
+2018-07-03 17:46:19,212 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=400, exceptions=[org.mule.module.apikit.exception.BadRequestException]}
+2018-07-03 17:46:19,241 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: sapi-sap-m-main.stage1
+2018-07-03 17:46:19,254 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: sapi-sap-m-console
+2018-07-03 17:46:19,254 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@1b1252c8
+2018-07-03 17:46:19,257 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: sapi-sap-m-console.stage1
+2018-07-03 17:46:19,260 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: post:/account:sapi-sap-m-config
+2018-07-03 17:46:19,260 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@7272ee51
+2018-07-03 17:46:19,264 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: post:/account:sapi-sap-m-config.stage1
+2018-07-03 17:46:19,265 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: post:/meter_install:sapi-sap-m-config
+2018-07-03 17:46:19,265 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@5d1a859c
+2018-07-03 17:46:19,267 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: post:/meter_install:sapi-sap-m-config.stage1
+2018-07-03 17:46:19,268 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: post:/peer_compare:sapi-sap-m-config
+2018-07-03 17:46:19,268 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@5cce40d7
+2018-07-03 17:46:19,270 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: post:/peer_compare:sapi-sap-m-config.stage1
+2018-07-03 17:46:19,615 [main] INFO  org.mule.module.apikit.Configuration - Building resource URI cache...
+2018-07-03 17:46:19,838 [main] INFO  org.mule.config.spring.SpringXmlConfigurationBuilder - Configured Mule using "org.mule.config.spring.SpringXmlConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='/Users/samuel/AnypointStudio/sp-group-final/.mule/apps/sp-sap-m/sapi-sap-m.xml'}]"
+2018-07-03 17:46:19,838 [main] INFO  org.mule.config.builders.AutoConfigurationBuilder - Configured Mule using "org.mule.config.builders.AutoConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='/Users/samuel/AnypointStudio/sp-group-final/.mule/apps/sp-sap-m/sapi-sap-m.xml'}]"
+2018-07-03 17:46:19,842 [main] INFO  com.mulesoft.module.policies.lifecyle.GateKeeper - GateKeeper Mode: DISABLED
+2018-07-03 17:46:19,842 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Starting app 'sp-sap-m'                                  +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-07-03 17:46:19,844 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Starting ResourceManager
+2018-07-03 17:46:19,844 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Started ResourceManager
+2018-07-03 17:46:19,902 [main] INFO  org.mule.module.http.internal.listener.DefaultHttpListenerConfig - Listening for requests on http://0.0.0.0:8084
+2018-07-03 17:46:19,906 [main] INFO  org.mule.modules.oauth2.provider.agents.DefaultSplashScreenAgent - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ DevKit Extensions (0) used in this application 
+                             +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-07-03 17:46:19,907 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting model: _muleSystemModel
+2018-07-03 17:46:19,909 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: sapi-sap-m-main
+2018-07-03 17:46:19,910 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: sapi-sap-m-main.stage1
+2018-07-03 17:46:19,917 [main] INFO  org.mule.module.apikit.Configuration - 
+********************************************************************************
+* APIKit Console URL: http://127.0.0.1:8084/console                            *
+********************************************************************************
+2018-07-03 17:46:19,917 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: sapi-sap-m-console
+2018-07-03 17:46:19,917 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: sapi-sap-m-console.stage1
+2018-07-03 17:46:19,920 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: post:/account:sapi-sap-m-config
+2018-07-03 17:46:19,920 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: post:/account:sapi-sap-m-config.stage1
+2018-07-03 17:46:19,922 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: post:/meter_install:sapi-sap-m-config
+2018-07-03 17:46:19,922 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: post:/meter_install:sapi-sap-m-config.stage1
+2018-07-03 17:46:19,925 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: post:/peer_compare:sapi-sap-m-config
+2018-07-03 17:46:19,925 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: post:/peer_compare:sapi-sap-m-config.stage1
+2018-07-03 17:46:19,964 [main] INFO  org.mule.module.management.agent.WrapperManagerAgent - This JVM hasn't been launched by the wrapper, the agent will not run.
+2018-07-03 17:46:19,994 [main] INFO  org.mule.DefaultMuleContext - 
+**********************************************************************
+* Application: sp-sap-m                                              *
+* OS encoding: /, Mule encoding: UTF-8                               *
+*                                                                    *
+* Agents Running:                                                    *
+*   Batch module default engine                                      *
+*   JMX Agent                                                        *
+*   DevKit Extension Information                                     *
+*   Wrapper Manager                                                  *
+**********************************************************************
+2018-07-03 18:07:53,176 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing app 'sp-sap-m'                              +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-07-03 18:07:53,624 [main] INFO  org.mule.api.security.tls.TlsProperties - Loading configuration file: tls-default.conf
+2018-07-03 18:07:53,821 [main] INFO  org.mule.api.security.tls.TlsProperties - Loading configuration file: tls-default.conf
+2018-07-03 18:07:53,824 [main] INFO  org.mule.api.security.tls.TlsProperties - Loading configuration file: tls-default.conf
+2018-07-03 18:07:57,523 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising RegistryBroker
+2018-07-03 18:07:57,613 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Starting discovery of extensions
+2018-07-03 18:07:57,714 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Discovered 1 extensions
+2018-07-03 18:07:57,714 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Registering extension validation (version 3.9)
+2018-07-03 18:07:57,772 [main] INFO  org.mule.config.spring.MuleArtifactContext - Refreshing org.mule.config.spring.MuleArtifactContext@59c33386: startup date [Tue Jul 03 18:07:57 HKT 2018]; root of context hierarchy
+2018-07-03 18:07:58,822 [main] INFO  org.mule.config.spring.processors.NoDevkitInjectorProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-07-03 18:07:59,864 [main] WARN  org.mule.module.ognl.expression.OgnlExpressionEvaluator - OGNL module is deprecated and will be removed in Mule 4.0. Use MEL expressions instead.
+2018-07-03 18:08:00,077 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs /Users/samuel/AnypointStudio/sp-group-final/.mule/./.mule/sp-sap-m/queue-tx-log/tx1.log and /Users/samuel/AnypointStudio/sp-group-final/.mule/./.mule/sp-sap-m/queue-tx-log/tx2.log
+2018-07-03 18:08:00,090 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs /Users/samuel/AnypointStudio/sp-group-final/.mule/./.mule/sp-sap-m/queue-xa-tx-log/tx1.log and /Users/samuel/AnypointStudio/sp-group-final/.mule/./.mule/sp-sap-m/queue-xa-tx-log/tx2.log
+2018-07-03 18:08:00,166 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising model: _muleSystemModel
+2018-07-03 18:08:00,168 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: sapi-sap-m-main
+2018-07-03 18:08:00,168 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=404, exceptions=[org.mule.module.apikit.exception.NotFoundException]}
+2018-07-03 18:08:00,173 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=405, exceptions=[org.mule.module.apikit.exception.MethodNotAllowedException]}
+2018-07-03 18:08:00,173 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=415, exceptions=[org.mule.module.apikit.exception.UnsupportedMediaTypeException]}
+2018-07-03 18:08:00,174 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=406, exceptions=[org.mule.module.apikit.exception.NotAcceptableException]}
+2018-07-03 18:08:00,174 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=400, exceptions=[org.mule.module.apikit.exception.BadRequestException]}
+2018-07-03 18:08:00,197 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: sapi-sap-m-main.stage1
+2018-07-03 18:08:00,207 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: sapi-sap-m-console
+2018-07-03 18:08:00,207 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@1b1252c8
+2018-07-03 18:08:00,211 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: sapi-sap-m-console.stage1
+2018-07-03 18:08:00,214 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: post:/account:sapi-sap-m-config
+2018-07-03 18:08:00,214 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@7272ee51
+2018-07-03 18:08:00,217 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: post:/account:sapi-sap-m-config.stage1
+2018-07-03 18:08:00,218 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: post:/meter_install:sapi-sap-m-config
+2018-07-03 18:08:00,218 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@5d1a859c
+2018-07-03 18:08:00,220 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: post:/meter_install:sapi-sap-m-config.stage1
+2018-07-03 18:08:00,222 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: post:/peer_compare:sapi-sap-m-config
+2018-07-03 18:08:00,222 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@5cce40d7
+2018-07-03 18:08:00,225 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: post:/peer_compare:sapi-sap-m-config.stage1
+2018-07-03 18:08:00,496 [main] INFO  org.mule.module.apikit.Configuration - Building resource URI cache...
+2018-07-03 18:08:00,663 [main] INFO  org.mule.config.spring.SpringXmlConfigurationBuilder - Configured Mule using "org.mule.config.spring.SpringXmlConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='/Users/samuel/AnypointStudio/sp-group-final/.mule/apps/sp-sap-m/sapi-sap-m.xml'}]"
+2018-07-03 18:08:00,663 [main] INFO  org.mule.config.builders.AutoConfigurationBuilder - Configured Mule using "org.mule.config.builders.AutoConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='/Users/samuel/AnypointStudio/sp-group-final/.mule/apps/sp-sap-m/sapi-sap-m.xml'}]"
+2018-07-03 18:08:00,667 [main] INFO  com.mulesoft.module.policies.lifecyle.GateKeeper - GateKeeper Mode: DISABLED
+2018-07-03 18:08:00,668 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Starting app 'sp-sap-m'                                  +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-07-03 18:08:00,669 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Starting ResourceManager
+2018-07-03 18:08:00,669 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Started ResourceManager
+2018-07-03 18:08:00,719 [main] INFO  org.mule.module.http.internal.listener.DefaultHttpListenerConfig - Listening for requests on http://0.0.0.0:8084
+2018-07-03 18:08:00,723 [main] INFO  org.mule.modules.oauth2.provider.agents.DefaultSplashScreenAgent - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ DevKit Extensions (0) used in this application 
+                             +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-07-03 18:08:00,725 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting model: _muleSystemModel
+2018-07-03 18:08:00,726 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: sapi-sap-m-main
+2018-07-03 18:08:00,727 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: sapi-sap-m-main.stage1
+2018-07-03 18:08:00,735 [main] INFO  org.mule.module.apikit.Configuration - 
+********************************************************************************
+* APIKit Console URL: http://127.0.0.1:8084/console                            *
+********************************************************************************
+2018-07-03 18:08:00,736 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: sapi-sap-m-console
+2018-07-03 18:08:00,736 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: sapi-sap-m-console.stage1
+2018-07-03 18:08:00,739 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: post:/account:sapi-sap-m-config
+2018-07-03 18:08:00,739 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: post:/account:sapi-sap-m-config.stage1
+2018-07-03 18:08:00,741 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: post:/meter_install:sapi-sap-m-config
+2018-07-03 18:08:00,741 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: post:/meter_install:sapi-sap-m-config.stage1
+2018-07-03 18:08:00,743 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: post:/peer_compare:sapi-sap-m-config
+2018-07-03 18:08:00,743 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: post:/peer_compare:sapi-sap-m-config.stage1
+2018-07-03 18:08:00,782 [main] INFO  org.mule.module.management.agent.WrapperManagerAgent - This JVM hasn't been launched by the wrapper, the agent will not run.
+2018-07-03 18:08:00,811 [main] INFO  org.mule.DefaultMuleContext - 
+**********************************************************************
+* Application: sp-sap-m                                              *
+* OS encoding: /, Mule encoding: UTF-8                               *
+*                                                                    *
+* Agents Running:                                                    *
+*   Batch module default engine                                      *
+*   JMX Agent                                                        *
+*   DevKit Extension Information                                     *
+*   Wrapper Manager                                                  *
+**********************************************************************
